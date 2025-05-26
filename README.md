@@ -20,13 +20,7 @@ API REST construída com **Node.js**, **Express** e **MongoDB** para controle fi
 
 ## 📁 Estrutura do Projeto
 
-
-
-├── controllers/ # Lida com as requisições HTTP
-├── routes/ # Define as rotas da API
-├── services/ # Lógica de negócio
-├── models/ # Schemas do Mongoose
-└── server.js # Ponto de entrada da aplicação
+![alt text](image.png)
 
 ## 📖 Documentação Swagger
 
