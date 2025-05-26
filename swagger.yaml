@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: Financial API
+  version: 1.0.0
+  description: API para controle de despesas com parcelamento
+
+servers:
+  - url: http://localhost:3000
+    description: API local
+
+paths:
+  /expenses:
+    post:
+      tags:
+        - Despesas
+      summary: Criar uma nova despesa
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                category:
+                  type: string
+                amount:
+                  type: string
+                date:
+                  type: string
+                  format: date
+                qtdeInstallment:
+                  type: integer
+      responses:
+        '201':
+          description: Despesa criada
+    get:
+      tags:
+        - Despesas
+      summary: Listar todas as despesas
+      responses:
+        '200':
+          description: Lista de despesas
+
+  /expenses/{id}:
+    put:
+      tags:
+        - Despesas
+      summary: Atualizar despesa por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isPaid:
+                  type: boolean
+      responses:
+        '200':
+          description: Atualizado com sucesso
+    delete:
+      tags:
+        - Despesas
+      summary: Deletar despesa por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deletado com sucesso
+
+  /expenses/month/{year}/{month}:
+    get:
+      tags:
+        - Despesas
+      summary: Buscar despesas por mês
+      parameters:
+        - name: year
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: month
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de despesas do mês
